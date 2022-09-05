@@ -1,0 +1,13 @@
+# Config files
+.vscode
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Main files
+main.c
