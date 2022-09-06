@@ -150,7 +150,12 @@ bool add_list_node(list_t * list, list_node_t * node, const void * data)
 }
 
 
-
+/**Confirm if data is in given list
+ * 
+ * Returns true if the given comparison function "match" returns true
+ * for the given data and a piece of data stored in the given list. 
+ * Otherwise, it will return false.
+ */
 bool in_list(list_t * list, const void * data, bool (*match)(void *, void *))
 {
     for (list_node_t * node = list->head; node != NULL; node = node->next)

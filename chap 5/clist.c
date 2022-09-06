@@ -12,7 +12,7 @@ void init_clist(clist_t * list)
 }
 
 
-// List object constructor
+// clist object constructor
 clist_t * create_clist(void)
 {
     clist_t * list;
@@ -143,7 +143,12 @@ bool add_clist_node(clist_t * list, clist_node_t * node, const void * data)
 }
 
 
-
+/**Confirm if data is in given list
+ * 
+ * Returns true if the given comparison function "match" returns true
+ * for the given data and a piece of data stored in the given list. 
+ * Otherwise, it will return false.
+ */
 bool in_clist(clist_t * list, const void * data, bool (*match)(void *, void *))
 {
     for (clist_node_t * node = list->head->next; node != list->head; node = node->next)

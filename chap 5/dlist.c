@@ -158,7 +158,12 @@ void * remove_dlist_node(dlist_t * list, dlist_node_t * node)
 }
 
 
-
+/**Confirm if data is in given list
+ * 
+ * Returns true if the given comparison function "match" returns true
+ * for the given data and a piece of data stored in the given list. 
+ * Otherwise, it will return false.
+ */
 bool in_dlist(dlist_t * list, const void * data, bool (*match) (void *, void *))
 {
     for (dlist_node_t * node = list->head; node != NULL; node = node->next)

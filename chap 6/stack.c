@@ -4,7 +4,7 @@
 #include "stack.h"
 
 
-/* Public singly-linked stack methods */
+/* Public stack methods */
 
 
 /**Pop head node from stack
@@ -88,3 +88,21 @@ bool put_stack_data(stack_t * stack, const void * data)
     return true;
 }
 
+
+/**Confirm if data is in given stack
+ * 
+ * Returns true if the given comparison function "match" returns true
+ * for the given data and a piece of data stored in the given stack. 
+ * Otherwise, it will return false.
+ */
+bool in_stack(stack_t * stack, const void * data, bool (*match)(void *, void *))
+{
+    for (stack_node_t * node = stack->head; node != NULL; node = node->next)
+    {
+        if (match(data, node->data))
+        {
+            return true;
+        }
+    }
+    return false;
+}

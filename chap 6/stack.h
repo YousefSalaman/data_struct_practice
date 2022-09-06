@@ -28,6 +28,8 @@ bool put_stack_data(stack_t * stack, const void * data);
 
 void push_node(stack_t * stack, stack_node_t * new_node);
 
+bool in_stack(stack_t * stack, const void * data, bool (*match)(void *, void *));
+
 #define peek_stack(stack) ((stack)->head == NULL ? NULL: (stack)->head->data)
 
 #define stack_size(stack) (stack)->size

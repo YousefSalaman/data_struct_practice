@@ -26,6 +26,8 @@ typedef list_t queue_t;
 
 #define peek_queue(queue) ((queue)->head == NULL ? NULL: (queue)->head->data)
 
+#define in_queue(queue, data, match) in_list((list_t *) queue, data, match)
+
 #define queue_size(queue) (queue)->size
 
 #endif
