@@ -1,9 +1,9 @@
 #include "pages.h"
 
 
-Page * replace_page(c_list_node_t * curr_page_node)
+page_t * replace_page(clist_node_t * curr_page_node)
 {
-    Page * curr_page = curr_page_node->data;
+    page_t * curr_page = curr_page_node->data;
 
     while (curr_page->reference != 0)
     {

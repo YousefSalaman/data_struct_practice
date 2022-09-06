@@ -4,13 +4,14 @@
 #include "../lists.h"
 
 // Object that stores information about pages
-typedef struct Page_ {
+typedef struct page 
+{
     int number;
     int reference;
-} Page;
+} page_t;
 
 /* Public page methods */
 
-Page * replace_page(CListNode * curr_page_node);
+page_t * replace_page(clist_node_t * curr_page_node);
 
 #endif

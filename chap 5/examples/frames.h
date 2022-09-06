@@ -3,7 +3,9 @@
 
 /* Public frame methods */
 
-int alloc_frame(List * frames);
-bool free_frame(List * frames, int frame_num);
+#include "../lists.h"
+
+int alloc_frame(list_t * frames);
+bool free_frame(list_t * frames, int frame_num);
 
 #endif
