@@ -156,3 +156,17 @@ void * remove_dlist_node(dlist_t * list, dlist_node_t * node)
 
     return data;
 }
+
+
+
+bool in_dlist(dlist_t * list, const void * data, bool (*match) (void *, void *))
+{
+    for (dlist_node_t * node = list->head; node != NULL; node = node->next)
+    {
+        if (match(data, node->data))
+        {
+            return true;
+        }
+    }
+    return false;
+}

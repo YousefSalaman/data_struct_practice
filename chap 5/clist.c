@@ -141,3 +141,17 @@ bool add_clist_node(clist_t * list, clist_node_t * node, const void * data)
     
     return true;
 }
+
+
+
+bool in_clist(clist_t * list, const void * data, bool (*match)(void *, void *))
+{
+    for (clist_node_t * node = list->head->next; node != list->head; node = node->next)
+    {
+        if (match(data, node->data))
+        {
+            return true;
+        }
+    }
+    return false;
+}

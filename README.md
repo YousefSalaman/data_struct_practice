@@ -2,7 +2,7 @@
 
 The code here is based on the code found in Mastering Algorithms with C by Kyle Loudon.
 
-In here, you can find the code for the data structures, algorithms, and examples. However, these were modified for the following reasons:
+In here, you can find the code for the data structures, algorithms, and examples presented in the book. However, these were modified for the following reasons:
 
 1. Brevity: The comments used in the books are not pleasant to look at.
 
@@ -12,4 +12,4 @@ In here, you can find the code for the data structures, algorithms, and examples
 
 4. Debugging: Some of the code might cause bugs, so I attempt to address what I can find here (and this will be noted in a comment whenever this happens)
 
-5. Coding style: The presented here uses a style that is more familiar in embedded applications.
+5. Coding style: The code presented here uses a style that is more familiar in embedded applications.

@@ -148,3 +148,17 @@ bool add_list_node(list_t * list, list_node_t * node, const void * data)
     
     return true;
 }
+
+
+
+bool in_list(list_t * list, const void * data, bool (*match)(void *, void *))
+{
+    for (list_node_t * node = list->head; node != NULL; node = node->next)
+    {
+        if (match(data, node->data))
+        {
+            return true;
+        }
+    }
+    return false;
+}
