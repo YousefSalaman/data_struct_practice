@@ -110,14 +110,21 @@ void * delete_clist_node(clist_t * list, clist_node_t * node)
  * Note that the node argument must be from the list and new_node
  * is a node that is not from the list.
  */
-void insert_clist_node(clist_t * list, clist_node_t * restrict node, clist_node_t * restrict new_node)
+bool insert_clist_node(clist_t * list, clist_node_t * restrict node, clist_node_t * restrict new_node)
 {
+    if (new_node == NULL)
+    {
+        return false;
+    }
+
     clist_node_t ** old_node = (node == NULL)? &list->head: &node->next;  // Where new node will be placed
 
     new_node->next = (*old_node == NULL)? new_node: *old_node;  // If list is empty, link new head to itself. Otherwise, link the old node 
     *old_node = new_node;
 
     list->size++;  // Update list size
+    
+    return true;
 }
 
 

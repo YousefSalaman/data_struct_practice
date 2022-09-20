@@ -60,7 +60,7 @@ void init_list(list_t * list);
 
 bool add_list_node(list_t * list, list_node_t * node, const void * data);
 
-void insert_list_node(list_t * list, list_node_t * restrict node, list_node_t * restrict new_node);
+bool insert_list_node(list_t * list, list_node_t * restrict node, list_node_t * restrict new_node);
 
 list_node_t * remove_list_node(list_t *list, list_node_t *node);
 
@@ -95,11 +95,29 @@ void destroy_dlist(dlist_t *list, void (*destroy_data)(void *));
 
 void init_dlist(dlist_t *list);
 
-bool insert_next_dlist_node(dlist_t *list, dlist_node_t *node, const void *data);
+bool insert_next_dlist_node(dlist_t *list, dlist_node_t * restrict node, dlist_node_t * restrict new_node);
 
-bool insert_prev_dlist_node(dlist_t *list, dlist_node_t *node, const void *data);
+bool insert_prev_dlist_node(dlist_t *list, dlist_node_t * restrict node, dlist_node_t * restrict new_node);
 
-void *remove_dlist_node(dlist_t *list, dlist_node_t *node);
+bool add_dlist_node_private(dlist_t * list, dlist_node_t * node, const void * data, bool insert_dlist_node(dlist_t * list, dlist_node_t * restrict node, dlist_node_t * restrict new_node));
+
+/**Create and insert new node with data next to the given node in the list
+ * 
+ * Returns true if it was successful in doing so. Otherwise, it
+ * returns false (because there is no more space left).
+ */
+#define add_next_dlist_node(list, node, data) add_dlist_node_private(list, node, data, insert_next_dlist_node)
+
+/**Create and insert new node with data before the given node in the list
+ * 
+ * Returns true if it was successful in doing so. Otherwise, it
+ * returns false (because there is no more space left).
+ */
+#define add_prev_dlist_node(list, node, data) add_dlist_node_private(list, node, data, insert_prev_dlist_node)
+
+bool remove_dlist_node(dlist_t *list, dlist_node_t *node);
+
+void * delete_dlist_node(dlist_t * list, dlist_node_t * node);
 
 #define dlist_size(list) ((list)->size)
 
@@ -126,7 +144,7 @@ void init_clist(clist_t *list);
 
 bool add_clist_node(clist_t * list, clist_node_t * node, const void * data);
 
-void insert_clist_node(clist_t * list, clist_node_t * restrict node, clist_node_t * restrict new_node);
+bool insert_clist_node(clist_t * list, clist_node_t * restrict node, clist_node_t * restrict new_node);
 
 void clear_clist(clist_t *list, void (*destroy_data)(void *));
 

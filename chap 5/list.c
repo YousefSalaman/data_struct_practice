@@ -109,8 +109,13 @@ void * delete_list_node(list_t * list, list_node_t * node)
  * Note that the node argument must be from the list and new_node
  * is a node that is not in the list.
  */
-void insert_list_node(list_t * list, list_node_t * restrict node, list_node_t * restrict new_node)
+bool insert_list_node(list_t * list, list_node_t * restrict node, list_node_t * restrict new_node)
 {
+    if (new_node == NULL)
+    {
+        return false;
+    }
+
     list_node_t ** old_node = (node == NULL)? &list->head: &node->next;  // Where new node will be placed
 
     // If new node will be placed at tail 
@@ -124,6 +129,8 @@ void insert_list_node(list_t * list, list_node_t * restrict node, list_node_t * 
     *old_node = new_node;
 
     list->size++;  // Update list size
+
+    return true;
 }
 
 
