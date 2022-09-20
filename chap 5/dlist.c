@@ -61,6 +61,17 @@ void destroy_dlist(dlist_t * list, void (*destroy_data)(void *))
 }
 
 
+/**Insert new node next to given node from list
+ * 
+ * This one does not create a new node for the given list. It just 
+ * places a new node next to the given node. If you also want to
+ * create a new node and place data in it, use the add_clist_node
+ * clist method. To insert a node in the list head, you have to 
+ * input NULL in the node argument.
+ * 
+ * Note that the node argument must be from the list and new_node
+ * is a node that is not from the list.
+ */
 bool insert_next_dlist_node(dlist_t * list, dlist_node_t * restrict node, dlist_node_t * restrict new_node)
 {
     // NULL is not a valid entry if list is not empty
@@ -99,6 +110,17 @@ bool insert_next_dlist_node(dlist_t * list, dlist_node_t * restrict node, dlist_
 }
 
 
+/**Insert new node before given node from list
+ * 
+ * This one does not create a new node for the given list. It just 
+ * places a new node next to the given node. If you also want to
+ * create a new node and place data in it, use the add_clist_node
+ * clist method. To insert a node in the list head, you have to 
+ * input NULL in the node argument.
+ * 
+ * Note that the node argument must be from the list and new_node
+ * is a node that is not from the list.
+ */
 bool insert_prev_dlist_node(dlist_t * list, dlist_node_t * restrict node, dlist_node_t * restrict new_node)
 {
     // NULL is not a valid entry if list is not empty
@@ -137,7 +159,11 @@ bool insert_prev_dlist_node(dlist_t * list, dlist_node_t * restrict node, dlist_
 }
 
 
-
+/**Removes given node from the list
+ * 
+ * Returns false if either the given node is NULL or if
+ * the list is empty. Otherwise, it will return true.
+ */
 bool remove_dlist_node(dlist_t * list, dlist_node_t * node)
 {
     dlist_node_t ** prev_node = (node == list->head)? &list->head: &node->prev->next;
@@ -166,6 +192,11 @@ bool remove_dlist_node(dlist_t * list, dlist_node_t * node)
 }
 
 
+/**Remove and delete given node from list
+ *
+ * Returns data that was stored in next node, and if an incorrect
+ * deletion was requested, then it will return NULL.
+ */
 void * delete_dlist_node(dlist_t * list, dlist_node_t * node)
 {
     remove_dlist_node(list, node);

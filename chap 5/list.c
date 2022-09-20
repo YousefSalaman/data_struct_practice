@@ -57,7 +57,11 @@ void destroy_list(list_t * list, void (*destroy_data)(void *))
 }
 
 
-
+/**Removes node next to the given node from the list
+ * 
+ * It returns the node that was removed from the list. Unless
+ * the node to remove is NULL.
+ */
 list_node_t * remove_list_node(list_t * list, list_node_t * node)
 {
     list_node_t ** rm_node = (node == NULL)? &list->head: &node->next;  // Node to remove
