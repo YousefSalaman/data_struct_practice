@@ -3,7 +3,6 @@
 
 #include "event.h"
 #include "events.h"
-#include "../queue.h"
 
 
 bool receive_event(queue_t *events, const event_t * event)
